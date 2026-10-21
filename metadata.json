@@ -1,0 +1,6 @@
+{
+  "name": "HCP+ Inventario IT",
+  "description": "Sistema de gestión de inventario informático (portátiles, sobremesas, periféricos e historial) sin base de datos, preparado para servidor IIS y Windows Server.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
