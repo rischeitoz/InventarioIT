@@ -11,6 +11,7 @@ import {
   Server,
   Database,
   PlusCircle,
+  Download,
 } from 'lucide-react';
 
 export function Sidebar() {
@@ -119,27 +120,27 @@ export function Sidebar() {
         </nav>
       </div>
 
-      {/* Windows Server / IIS integration box */}
+      {/* Windows Server / Local JSON Data Box */}
       <div className="p-4 border-t border-zinc-900">
         <div className="bg-zinc-900/90 rounded-lg p-3 border border-zinc-800">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] font-semibold text-zinc-300 flex items-center gap-1.5">
-              <Server className="w-3.5 h-3.5 text-[#d8fa18]" />
-              Servidor IIS
+              <Database className="w-3.5 h-3.5 text-[#d8fa18]" />
+              Datos en Disco
             </span>
             <span className="text-[10px] px-1.5 py-0.5 bg-[#d8fa18]/20 text-[#d8fa18] rounded font-mono">
               Sin BD
             </span>
           </div>
           <p className="text-[11px] text-zinc-400 leading-tight mb-2.5">
-            Persistencia en archivo JSON local adaptada a Windows Server.
+            Persistencia en archivo JSON local en Windows Server.
           </p>
           <button
             onClick={() => setIsIisModalOpen(true)}
             className="w-full flex items-center justify-center gap-1.5 py-1.5 px-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs rounded font-medium border border-zinc-700 transition-colors"
           >
-            <Database className="w-3.5 h-3.5 text-[#d8fa18]" />
-            Configuración IIS & Backup
+            <Download className="w-3.5 h-3.5 text-[#d8fa18]" />
+            Copia de Seguridad (JSON)
           </button>
         </div>
       </div>

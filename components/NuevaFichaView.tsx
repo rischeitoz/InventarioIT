@@ -17,6 +17,7 @@ import {
   Activity,
   Upload,
 } from 'lucide-react';
+import { getApiEndpoint } from '@/lib/utils';
 
 export function NuevaFichaView() {
   const { setActiveTab, addNewEquipment } = useInventory();
@@ -85,7 +86,7 @@ export function NuevaFichaView() {
       });
 
       // Call extraction endpoint to read the uploaded PDF's structure
-      const response = await fetch('/api/extract-pdf', {
+      const response = await fetch(getApiEndpoint('/api/extract-pdf'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

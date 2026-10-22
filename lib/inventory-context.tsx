@@ -9,6 +9,7 @@ import {
   Movement,
   INITIAL_DATA,
 } from '@/data/initial-data';
+import { getApiEndpoint } from '@/lib/utils';
 
 export type ActiveTab =
   | 'dashboard'
@@ -127,7 +128,7 @@ export function InventoryProvider({ children }: { children: React.ReactNode }) {
 
       // 2. Sync with server-side JSON file (Windows Server / IIS / Next.js API)
       try {
-        const res = await fetch('/api/inventory');
+        const res = await fetch(getApiEndpoint('/api/inventory'));
         if (res.ok) {
           const serverData = await res.json();
           if (isMounted && serverData && serverData.portatiles) {
@@ -159,7 +160,7 @@ export function InventoryProvider({ children }: { children: React.ReactNode }) {
     }
 
     // Persist to server without blocking UI
-    fetch('/api/inventory', {
+    fetch(getApiEndpoint('/api/inventory'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -771,7 +772,7 @@ export function InventoryProvider({ children }: { children: React.ReactNode }) {
   const resetToDefault = async () => {
     persistState(INITIAL_DATA);
     try {
-      await fetch('/api/inventory', {
+      await fetch(getApiEndpoint('/api/inventory'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'RESET_TO_DEFAULT' }),
@@ -785,7 +786,7 @@ export function InventoryProvider({ children }: { children: React.ReactNode }) {
     }
     persistState(backup);
     try {
-      await fetch('/api/inventory', {
+      await fetch(getApiEndpoint('/api/inventory'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'RESTORE_BACKUP', payload: backup }),

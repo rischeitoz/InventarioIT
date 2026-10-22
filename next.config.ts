@@ -1,6 +1,9 @@
 import type {NextConfig} from 'next';
 
+const basePath = process.env.BASE_PATH ? process.env.BASE_PATH.replace(/\/$/, '') : undefined;
+
 const nextConfig: NextConfig = {
+  basePath,
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
